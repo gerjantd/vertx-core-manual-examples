@@ -1,0 +1,2 @@
+mvn clean compile
+java -cp target/classes App
