@@ -11,6 +11,6 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>vertx-starter-04</artifactId>
+  <artifactId>vertx-starter-05</artifactId>
 
 </project>

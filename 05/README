@@ -1,3 +1,4 @@
-mvn clean package
-java -cp target/vertx-starter-04-1.0-SNAPSHOT-fat.jar App
+http://tutorials.jenkov.com/vert.x/verticles.html
 
+mvn clean package
+java -cp target/vertx-starter-05-1.0-SNAPSHOT-fat.jar VertxApp
