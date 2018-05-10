@@ -1,0 +1,8 @@
+https://vertx.io/docs/vertx-core/java/
+https://github.com/vert-x3/vertx-maven-starter
+http://tutorials.jenkov.com/vert.x/verticles.html
+
+mvn clean package
+java -jar target/vertx-starter-10-1.0-SNAPSHOT-fat.jar
+
+./redeploy.sh
