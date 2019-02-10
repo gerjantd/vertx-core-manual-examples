@@ -2,7 +2,7 @@ package io.vertx.starter;
 
 import io.vertx.core.buffer.Buffer;
 
-public class App {
+public class JavaAppBufferLength {
 
   public static void main(String[] args) throws InterruptedException {
 

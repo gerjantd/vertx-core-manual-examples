@@ -11,7 +11,7 @@ http://tutorials.jenkov.com/vert.x/http-server.html
 mvn clean package
 java -jar target/vertx-starter-15-1.0-SNAPSHOT-fat.jar
 java -cp target/vertx-starter-15-1.0-SNAPSHOT-fat.jar io.vertx.starter.VertxApp
-(java -cp target/vertx-starter-15-1.0-SNAPSHOT-fat.jar io.vertx.starter.App)
+(java -cp target/vertx-starter-15-1.0-SNAPSHOT-fat.jar io.vertx.starter.JavaAppMainVerticle)
 
 ### 2.
 
@@ -22,7 +22,7 @@ java -cp target/vertx-starter-15-1.0-SNAPSHOT-fat.jar io.vertx.starter.VertxApp
 mvn clean compile dependency:copy-dependencies
 CLASSPATH=$(echo target/dependency/*.jar | tr ' ' ':'):target/classes
 java -cp $CLASSPATH io.vertx.starter.VertxApp
-(java -cp $CLASSPATH io.vertx.starter.App)
+(java -cp $CLASSPATH io.vertx.starter.JavaAppMainVerticle)
 
 ### Test
 

@@ -2,7 +2,7 @@ package io.vertx.starter;
 
 import java.time.LocalDateTime;
 
-public class JavaApp3 {
+public class JavaAppNowLoop {
 
 	public static void main(String[] args) throws InterruptedException {
 
