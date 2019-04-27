@@ -1,0 +1,28 @@
+git status
+mvn clean
+git branch -v
+git checkout -b 17
+cp -pvri 16 17
+sed -i -e 's/^  <\/modules>/    <module>17<\/module>\n  <\/modules>/' pom.xml
+vi pom.xml 
+sed -i -e 's/vertx-starter-[0-9]\{2\}/vertx-starter-17/' 17/pom.xml
+vi 17/pom.xml 
+sed -i -e 's/vertx-starter-[0-9]\{2\}/vertx-starter-17/' 17/README
+vi 17/README 
+cd 17
+
+(work)*
+
+./redeploy.sh 
+mvn clean package
+java -jar target/vertx-starter-17-1.0-SNAPSHOT-fat.jar 
+cd ..
+git status
+git add pom.xml 17
+git commit -m "Add module 17"
+mvn clean
+git checkout master
+git merge 17
+git log
+git tag -a 17-foo "Module 17 foo"
+git push origin master --tags
