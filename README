@@ -1,6 +1,6 @@
 git status
 mvn clean
-git branch -v
+git branch -a
 git checkout -b 17
 cp -pvri 16 17
 sed -i -e 's/^  <\/modules>/    <module>17<\/module>\n  <\/modules>/' pom.xml
