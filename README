@@ -26,3 +26,4 @@ git merge 17
 git log
 git tag -a 17-module-workflow -m "Module workflow example"
 git push origin master --tags
+git branch -d 17
