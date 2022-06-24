@@ -1,4 +1,14 @@
+# Module 05
+
+## Description
+
+Basic verticles examples following http://tutorials.jenkov.com/vert.x/verticles.html.
+
+## References
+
 http://tutorials.jenkov.com/vert.x/verticles.html
 
+## Notes
+
 mvn clean package
-java -cp target/vertx-starter-05-1.0-SNAPSHOT-fat.jar VertxApp
+java -cp target/vertx-starter-05-1.0.0-SNAPSHOT-fat.jar VertxApp

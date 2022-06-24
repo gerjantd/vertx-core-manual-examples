@@ -1,3 +1,9 @@
+# Module 15
+
+## Description
+
+Vert.x HTTP server examples, as per http://tutorials.jenkov.com/vert.x/http-server.html.
+
 ## References
 
 https://vertx.io/docs/vertx-core/java/
@@ -9,9 +15,9 @@ http://tutorials.jenkov.com/vert.x/http-server.html
 ### 1.
 
 mvn clean package
-java -jar target/vertx-starter-15-1.0-SNAPSHOT-fat.jar
-java -cp target/vertx-starter-15-1.0-SNAPSHOT-fat.jar io.vertx.starter.VertxApp
-(java -cp target/vertx-starter-15-1.0-SNAPSHOT-fat.jar io.vertx.starter.JavaAppMainVerticle)
+java -jar target/vertx-starter-15-1.0.0-SNAPSHOT-fat.jar
+java -cp target/vertx-starter-15-1.0.0-SNAPSHOT-fat.jar io.vertx.starter.VertxApp
+(java -cp target/vertx-starter-15-1.0.0-SNAPSHOT-fat.jar io.vertx.starter.JavaAppMainVerticle)
 
 ### 2.
 
@@ -28,4 +34,3 @@ java -cp $CLASSPATH io.vertx.starter.VertxApp
 
 for i in $(seq 1 4); do curl http://localhost:8080?p=$i; echo; done
 for i in $(seq 1 4); do curl -X POST -d name=daniel -d skill=lousy http://localhost:8080; echo; done
-

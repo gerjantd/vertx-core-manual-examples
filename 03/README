@@ -1,2 +1,10 @@
+# Module 03
+
+## Description
+
+As module 02, mvn and classpath tests.
+
+## Notes
+
 mvn clean compile
 java -cp target/classes App

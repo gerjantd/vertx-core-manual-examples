@@ -102,8 +102,9 @@ public class MainVerticle extends AbstractVerticle {
     int    anInt   = buffer7.getInt   ( 4);
     long   aLong   = buffer7.getLong  ( 8);
     float  aFloat  = buffer7.getFloat (16);
+/*
     double aDouble = buffer7.getDouble(20);
-
+*/
   }
 
 }

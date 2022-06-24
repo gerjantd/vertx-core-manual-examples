@@ -1,6 +1,16 @@
+# Module 06
+
+## Description
+
+Basic verticles examples following http://tutorials.jenkov.com/vert.x/verticles.html.
+
+## References
+
 https://vertx.io/docs/vertx-core/java/
 https://github.com/vert-x3/vertx-maven-starter
 http://tutorials.jenkov.com/vert.x/verticles.html
 
+## Notes
+
 mvn clean package
-java -cp target/vertx-starter-06-1.0-SNAPSHOT-fat.jar io.vertx.starter.VertxApp
+java -cp target/vertx-starter-06-1.0.0-SNAPSHOT-fat.jar io.vertx.starter.VertxApp

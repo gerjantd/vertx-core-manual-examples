@@ -1,3 +1,11 @@
+# Module 04
+
+## Description
+
+As module 03, mvn and classpath tests.
+
+## Notes
+
 mvn clean package
-java -cp target/vertx-starter-04-1.0-SNAPSHOT-fat.jar App
+java -cp target/vertx-starter-04-1.0.0-SNAPSHOT-fat.jar App
 
