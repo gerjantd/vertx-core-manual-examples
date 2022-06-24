@@ -65,10 +65,11 @@ run10 () {
   popd > /dev/null 2>&1
 }
 
-#for MODULE in $(seq -f "%02g" 0 4); do run05; done
+#for MODULE in $(seq -f "%02g" 0 0); do run00; done
+#for MODULE in $(seq -f "%02g" 1 1); do run01; done
+#for MODULE in $(seq -f "%02g" 2 2); do run02; done
 for MODULE in $(seq -f "%02g" 3 3); do run03; done
 for MODULE in $(seq -f "%02g" 4 4); do run04; done
-exit 0
 for MODULE in $(seq -f "%02g" 5 5); do run05; done
 for MODULE in $(seq -f "%02g" 6 9); do run06; done
 for MODULE in $(seq -f "%02g" 10 20); do run10; done
