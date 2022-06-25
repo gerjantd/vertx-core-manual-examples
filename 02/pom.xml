@@ -45,7 +45,10 @@
         </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
+          <!-- see https://stackoverflow.com/questions/50526279/error-maven-with-mvn-test
           <version>2.20.1</version>
+	  -->
+          <version>2.21.0</version>
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
