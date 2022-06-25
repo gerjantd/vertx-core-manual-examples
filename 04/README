@@ -2,10 +2,13 @@
 
 ## Description
 
-As module 03, mvn and classpath tests.
+Like module 03 (Maven Java Hello World with parent pom), starting Vert.x.
 
 ## Notes
 
 mvn clean package
-java -cp target/vertx-starter-04-1.0.0-SNAPSHOT-fat.jar App
+java -cp target/*fat.jar App
 
+NOT:
+mvn clean package
+java -cp target/*SHOT.jar App

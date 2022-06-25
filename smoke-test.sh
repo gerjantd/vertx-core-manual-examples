@@ -76,27 +76,22 @@ for MODULE in $(seq $FROM_MODULE $TO_MODULE); do
 # https://unix.stackexchange.com/questions/49861/seq-invalid-floating-point-argument-error
 #printf '<%q>\n' "$FROM_MODULE"
 #printf '<%q>\n' "$TO_MODULE"
+  BUILD_COMMAND="mvn clean package"
   if [ $MODULE -ge 0 ] && [ $MODULE -le 1 ]; then
     echo "Module $MODULE is broken"
     exit 0
   elif [ $MODULE -eq 2 ]; then
-    BUILD_COMMAND="mvn clean package"
     RUN_COMMAND="java -cp target/*.jar jar.App"
   elif [ $MODULE -eq 3 ]; then
-    BUILD_COMMAND="mvn clean compile"
-    RUN_COMMAND="java -cp target/classes App"
+    RUN_COMMAND="java -cp target/*SNAPSHOT.jar App"
   elif [ $MODULE -eq 4 ]; then
-    BUILD_COMMAND="mvn clean package"
-    RUN_COMMAND="java -cp target/vertx*fat.jar App"
+    RUN_COMMAND="java -cp target/*fat.jar App"
   elif [ $MODULE -eq 5 ]; then
-    BUILD_COMMAND="mvn clean package"
-    RUN_COMMAND="java -cp target/vertx*fat.jar VertxApp"
+    RUN_COMMAND="java -cp target/*fat.jar VertxApp"
   elif [ $MODULE -ge 6 ] && [ $MODULE -le 9 ]; then
-    BUILD_COMMAND="mvn clean package"
-    RUN_COMMAND="java -cp target/vertx*fat.jar io.vertx.starter.VertxApp"
+    RUN_COMMAND="java -cp target/*fat.jar io.vertx.starter.VertxApp"
   elif [ $MODULE -ge 10 ]  && [ $MODULE -le 20 ]; then
-    BUILD_COMMAND="mvn clean package"
-    RUN_COMMAND="java -jar target/vertx*fat.jar"
+    RUN_COMMAND="java -jar target/*fat.jar"
   else
     echo "Module $MODULE does not exist"
     exit 0

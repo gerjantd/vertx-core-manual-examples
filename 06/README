@@ -2,7 +2,7 @@
 
 ## Description
 
-Basic verticles examples following http://tutorials.jenkov.com/vert.x/verticles.html.
+Like module 05 (Maven Java Vert.x basics with parent pom), with package structure.
 
 ## References
 
@@ -13,4 +13,4 @@ http://tutorials.jenkov.com/vert.x/verticles.html
 ## Notes
 
 mvn clean package
-java -cp target/vertx-starter-06-1.0.0-SNAPSHOT-fat.jar io.vertx.starter.VertxApp
+java -cp target/*fat.jar io.vertx.starter.VertxApp
