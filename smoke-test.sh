@@ -12,12 +12,12 @@ build_and_run () {
   pushd $(printf "%02d\n" $MODULE) > /dev/null 2>&1
   head -n 5 README
   echo "\n========\n"
-  echo "Building..."
+  echo "Building...\n"
   eval "$BUILD_COMMAND"
   echo ""
   head -n 5 README
   echo "\n========\n"
-  echo "Running... (Press Ctrl+C to continue)"
+  echo "Running... (Press Ctrl+C to continue)\n"
   eval "$RUN_COMMAND"
   popd > /dev/null 2>&1
 }
@@ -25,7 +25,7 @@ build_and_run () {
 show_time() {
   echo "\n========\n"
   ENDED=$(date +%s)
-  echo "$(basename $0) from module $FROM_MODULE to module $TO_MODULE took $(( (ENDED - STARTED) )) seconds"
+  echo "Ran $(basename $0 .sh) on modules $(printf "%02d\n" $FROM_MODULE) to $(printf "%02d\n" $TO_MODULE) in $(( (ENDED - STARTED) )) seconds"
 }
 
 # https://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash
@@ -33,7 +33,7 @@ show_time() {
 OPTIND=1
 
 # Initialize variables
-OUTPUT_FILE="$(basename $0).out"
+OUTPUT_FILE="$(basename $0 .sh).out"
 VERBOSE=0
 FROM_MODULE=
 TO_MODULE=0
@@ -76,9 +76,12 @@ for MODULE in $(seq $FROM_MODULE $TO_MODULE); do
 # https://unix.stackexchange.com/questions/49861/seq-invalid-floating-point-argument-error
 #printf '<%q>\n' "$FROM_MODULE"
 #printf '<%q>\n' "$TO_MODULE"
-  if [ $MODULE -ge 0 ] && [ $MODULE -le 2 ]; then
+  if [ $MODULE -ge 0 ] && [ $MODULE -le 1 ]; then
     echo "Module $MODULE is broken"
     exit 0
+  elif [ $MODULE -eq 2 ]; then
+    BUILD_COMMAND="mvn clean package"
+    RUN_COMMAND="java -cp target/*.jar jar.App"
   elif [ $MODULE -eq 3 ]; then
     BUILD_COMMAND="mvn clean compile"
     RUN_COMMAND="java -cp target/classes App"
