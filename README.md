@@ -33,6 +33,7 @@ $ ./smoke-test.sh -v -f 0 -t $(find . -maxdepth 1 -type d -name "??" | sed -e 's
 
 #### All, part 0.
 
+```bash
 $ export OLD=21
 $ export NEW=22
 $ git status
@@ -40,21 +41,27 @@ $ mvn clean
 $ git branch -a
 $ git checkout -b $NEW
 $ cp -pvri $OLD $NEW
+```
 
 #### Macos, part 1.
 
+```bash
 $ sed -i "" -e "s/^  <\/modules>/    <module>$NEW<\/module>\n  <\/modules>/" pom.xml
 $ sed -i "" -e "s/vertx-starter-[0-9]\{2\}/vertx-starter-$NEW/" $NEW/pom.xml
 $ sed -i "" -e "s/Module $OLD/Module $NEW/" $NEW/README
+```
 
 #### Linux, part 1.
 
+```bash
 $ sed -i -e 's/^  <\/modules>/    <module>$NEW<\/module>\n  <\/modules>/' pom.xml
 $ sed -i -e 's/vertx-starter-[0-9]\{2\}/vertx-starter-$NEW/' $NEW/pom.xml
 $ sed -i -e 's/Module $OLD/Module $NEW/' $NEW/README
+```
 
 #### All, part 2.
 
+```bash
 $ less pom.xml 
 $ less $NEW/pom.xml 
 $ less $NEW/README 
@@ -76,4 +83,4 @@ $ git log
 $ git tag -a $NEW-DESCRIPTION -m "DESCRIPTION"
 $ git push origin master --tags
 $ git branch -d $NEW
-
+```
