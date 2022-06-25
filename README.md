@@ -16,16 +16,18 @@ Maven Vert.x starter parent project, with modules showing basic development case
 
 ## References
 
-https://sdkman.io/
-https://vertx.io/docs/vertx-core/java/
-https://github.com/vert-x3/vertx-maven-starter
-http://tutorials.jenkov.com/vert.x/verticles.html
+* https://sdkman.io/
+* https://vertx.io/docs/vertx-core/java/
+* https://github.com/vert-x3/vertx-maven-starter
+* http://tutorials.jenkov.com/vert.x/verticles.html
 
 ## Notes
 
 ### Build and run all modules
 
+```bash
 $ ./smoke-test.sh -v -f 0 -t $(find . -maxdepth 1 -type d -name "??" | sed -e 's/.\///' | sort -r | head -n 1)
+```
 
 ### New module workflow
 
