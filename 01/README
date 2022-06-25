@@ -2,4 +2,11 @@
 
 ## Description
 
-Module 00, cleaned up.
+Like module 00 (Maven Vert.x project from template git repo vertx-maven-starter), minimised and using parent pom. 
+
+## Notes
+
+mvn clean package
+java -jar target/*fat.jar
+
+./redeploy.sh

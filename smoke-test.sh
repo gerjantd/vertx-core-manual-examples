@@ -77,9 +77,11 @@ for MODULE in $(seq $FROM_MODULE $TO_MODULE); do
 #printf '<%q>\n' "$FROM_MODULE"
 #printf '<%q>\n' "$TO_MODULE"
   BUILD_COMMAND="mvn clean package"
-  if [ $MODULE -ge 0 ] && [ $MODULE -le 1 ]; then
+  if [ $MODULE -eq 0 ]; then
     echo "Module $MODULE is broken"
     exit 0
+  elif [ $MODULE -eq 1 ]; then
+    RUN_COMMAND="java -jar target/*fat.jar"
   elif [ $MODULE -eq 2 ]; then
     RUN_COMMAND="java -cp target/*.jar jar.App"
   elif [ $MODULE -eq 3 ]; then

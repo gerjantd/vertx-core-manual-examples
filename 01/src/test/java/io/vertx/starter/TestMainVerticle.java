@@ -1,13 +1,5 @@
 package io.vertx.starter;
 
-//import io.vertx.core.Vertx;
-//import io.vertx.ext.unit.Async;
-//import io.vertx.ext.unit.TestContext;
-//import io.vertx.ext.unit.junit.VertxUnitRunner;
-//import org.junit.After;
-//import org.junit.Before;
-//import org.junit.Test;
-//import org.junit.runner.RunWith;
 import io.vertx.core.Vertx;
 import io.vertx.junit5.VertxExtension;
 import io.vertx.junit5.VertxTestContext;
@@ -30,6 +22,17 @@ public class TestMainVerticle {
 }
 
 /*
+package io.vertx.starter;
+
+import io.vertx.core.Vertx;
+import io.vertx.ext.unit.Async;
+import io.vertx.ext.unit.TestContext;
+import io.vertx.ext.unit.junit.VertxUnitRunner;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
 @RunWith(VertxUnitRunner.class)
 public class MainVerticleTest {
 
