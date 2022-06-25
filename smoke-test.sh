@@ -25,7 +25,11 @@ build_and_run () {
 show_time() {
   echo "\n========\n"
   ENDED=$(date +%s)
-  echo "Ran $(basename $0 .sh) on modules $(printf "%02d\n" $FROM_MODULE) to $(printf "%02d\n" $TO_MODULE) in $(( (ENDED - STARTED) )) seconds"
+  if [ $FROM_MODULE -eq $TO_MODULE ]; then
+    echo "Ran $(basename $0 .sh) on module $(printf "%02d\n" $FROM_MODULE) in $(( (ENDED - STARTED) )) seconds"
+  else
+    echo "Ran $(basename $0 .sh) on modules $(printf "%02d\n" $FROM_MODULE) to $(printf "%02d\n" $TO_MODULE) in $(( (ENDED - STARTED) )) seconds"
+  fi
 }
 
 # https://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash
@@ -61,7 +65,7 @@ shift $((OPTIND-1))
 
 [ "${1:-}" = "--" ] && shift
 
-echo "VERBOSE=$VERBOSE, OUTPUT_FILE="$OUTPUT_FILE", FROM_MODULE=$FROM_MODULE, TO_MODULE=$TO_MODULE, Leftovers: $@"
+#echo "VERBOSE=$VERBOSE, OUTPUT_FILE="$OUTPUT_FILE", FROM_MODULE=$FROM_MODULE, TO_MODULE=$TO_MODULE, Leftovers: $@"
 
 if [ "${FROM_MODULE}" = "" ]; then
   show_help
@@ -92,12 +96,13 @@ for MODULE in $(seq $FROM_MODULE $TO_MODULE); do
   elif [ $MODULE -ge 10 ]  && [ $MODULE -le 20 ]; then
     RUN_COMMAND="java -jar target/*fat.jar"
   else
-    echo "Module $(printf "%02d\n" $MODULE) not found"
-    exit 0
+    echo "Module $(printf "%02d\n" $MODULE) not found, aborting"
+    exit 1
   fi
   build_and_run
 done
 
-ENDED=$(date)
-show_time
-
+if [ $VERBOSE -eq 1 ]; then
+  ENDED=$(date)
+  show_time
+fi
