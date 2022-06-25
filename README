@@ -29,6 +29,24 @@ $ ./smoke-test.sh -v -f 0 -t 20
 
 ### New module workflow
 
+#### Macos, part 1.
+
+$ git status
+$ mvn clean
+$ git branch -a
+$ git checkout -b 21
+$ cp -pvri 20 21
+$ sed -i "" -e "s/^  <\/modules>/    <module>21<\/module>\n  <\/modules>/" pom.xml
+$ less pom.xml 
+$ sed -i "" -e "s/vertx-starter-[0-9]\{2\}/vertx-starter-21/" 21/pom.xml
+$ less 21/pom.xml 
+$ sed -i "" -e "s/Module 20/Module 21/" 21/README
+$ sed -i "" -e "s/vertx-starter-[0-9]\{2\}/vertx-starter-21/" 21/README
+$ less 21/README 
+$ cd 21
+
+#### Linux, part 1.
+
 $ git status
 $ mvn clean
 $ git branch -a
@@ -38,15 +56,18 @@ $ sed -i -e 's/^  <\/modules>/    <module>21<\/module>\n  <\/modules>/' pom.xml
 $ less pom.xml 
 $ sed -i -e 's/vertx-starter-[0-9]\{2\}/vertx-starter-21/' 21/pom.xml
 $ less 21/pom.xml 
+$ sed -i -e 's/Module 20/Module 21/' 21/README
 $ sed -i -e 's/vertx-starter-[0-9]\{2\}/vertx-starter-21/' 21/README
 $ less 21/README 
 $ cd 21
+
+#### All, part 2.
 
 (work)*
 
 $ ./redeploy.sh 
 $ mvn clean package
-$ java -jar target/vertx-starter-21-1.0-SNAPSHOT-fat.jar 
+$ java -jar target/*fat.jar 
 $ cd ..
 $ git status
 $ git add pom.xml 21
@@ -58,3 +79,4 @@ $ git log
 $ git tag -a 21-module-workflow -m "Module workflow example"
 $ git push origin master --tags
 $ git branch -d 21
+
