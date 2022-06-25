@@ -1,8 +1,8 @@
-# Module 21
+# Module 22
 
 ## Description
 
-Like module 20 (command line Vert.x), preparing simplified new module workflow.
+Like module 20 and 21 (command line Vert.x), verifying simplified new module workflow.
 
 ## References
 
@@ -14,24 +14,31 @@ Like module 20 (command line Vert.x), preparing simplified new module workflow.
 
 ### 1.
 
+```
 $ mvn clean package
 $ java -jar target/*fat.jar
 ($ java -cp target/*fat.jar io.vertx.starter.VertxApp)
 ($ java -cp target/*fat.jar io.vertx.starter.JavaAppMainVerticle)
+```
 
 ### 2.
 
-./redeploy.sh
+```
+$ ./redeploy.sh
+```
 
 ### 3.
 
+```
 $ mvn clean compile dependency:copy-dependencies
 $ CLASSPATH=$(echo target/dependency/*.jar | tr ' ' ':'):target/classes
 $ java -cp $CLASSPATH io.vertx.starter.VertxApp
 ($ java -cp $CLASSPATH io.vertx.starter.JavaAppMainVerticle)
+```
 
 ### Test
 
+```
 $ vertx -version
 $ mvn clean compile dependency:copy-dependencies
 $ vertx run io.vertx.starter.MainVerticle -cp $(echo target/dependency/*.jar|tr ' ' ':'):target/classes
@@ -41,3 +48,4 @@ $ cd target/classes/
 $ vertx run io.vertx.starter.MainVerticle
 $ cd ../../
 $ vertx run src/main/resources/helloworld.js
+```

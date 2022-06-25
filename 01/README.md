@@ -6,7 +6,11 @@ Like module 00 (Maven Vert.x project from template git repo vertx-maven-starter)
 
 ## Notes
 
-mvn clean package
-java -jar target/*fat.jar
+```
+$ mvn clean package
+$ java -jar target/*fat.jar
+```
 
-./redeploy.sh
+```
+$ ./redeploy.sh
+```

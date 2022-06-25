@@ -7,10 +7,10 @@ Vert.x project using Apache Maven created from template git repository https://g
 ## Notes
 
 ```bash
-mvn clean package
-java -jar target/*fat.jar
+$ mvn clean package
+$ java -jar target/*fat.jar
 ```
 
 ```bash
-./redeploy.sh
+$ ./redeploy.sh
 ```

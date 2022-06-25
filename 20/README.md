@@ -1,8 +1,8 @@
-# Module 22
+# Module 20
 
 ## Description
 
-Like module 20 and 21 (command line Vert.x), verifying simplified new module workflow.
+Command line Vert.x using the vertx command, as per http://tutorials.jenkov.com/vert.x/command-line.html.
 
 ## References
 
@@ -14,30 +14,38 @@ Like module 20 and 21 (command line Vert.x), verifying simplified new module wor
 
 ### 1.
 
+```
 $ mvn clean package
-$ java -jar target/*fat.jar
-($ java -cp target/*fat.jar io.vertx.starter.VertxApp)
-($ java -cp target/*fat.jar io.vertx.starter.JavaAppMainVerticle)
+$ java -jar target/vertx-starter-20-1.0.0-SNAPSHOT-fat.jar
+($ java -cp target/vertx-starter-20-1.0.0-SNAPSHOT-fat.jar io.vertx.starter.VertxApp)
+($ java -cp target/vertx-starter-20-1.0.0-SNAPSHOT-fat.jar io.vertx.starter.JavaAppMainVerticle)
+```
 
 ### 2.
 
-./redeploy.sh
+```
+$ ./redeploy.sh
+```
 
 ### 3.
 
+```
 $ mvn clean compile dependency:copy-dependencies
 $ CLASSPATH=$(echo target/dependency/*.jar | tr ' ' ':'):target/classes
 $ java -cp $CLASSPATH io.vertx.starter.VertxApp
 ($ java -cp $CLASSPATH io.vertx.starter.JavaAppMainVerticle)
+```
 
 ### Test
 
+```
 $ vertx -version
 $ mvn clean compile dependency:copy-dependencies
 $ vertx run io.vertx.starter.MainVerticle -cp $(echo target/dependency/*.jar|tr ' ' ':'):target/classes
 $ mvn clean package
-$ vertx run io.vertx.starter.MainVerticle -cp target/*SNAPSHOT.jar 
+$ vertx run io.vertx.starter.MainVerticle -cp target/vertx-starter-20-1.0.0-SNAPSHOT.jar 
 $ cd target/classes/
 $ vertx run io.vertx.starter.MainVerticle
 $ cd ../../
 $ vertx run src/main/resources/helloworld.js
+```
