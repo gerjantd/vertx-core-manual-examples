@@ -2,4 +2,11 @@
 
 ## Description
 
-Vert.x project using Apache Maven created from template git repository https://github.com/vert-x3/vertx-maven-starter.
+Vert.x project using Apache Maven created from template git repository https://github.com/vert-x3/vertx-maven-starter, reworked to use parent pom.
+
+## Notes
+
+mvn clean package
+java -jar target/*fat.jar
+
+./redeploy.sh
