@@ -2,7 +2,7 @@
 
 ## Description
 
-Command line Vert.x using the vertx command, as per http://tutorials.jenkov.com/vert.x/command-line.html.
+Like module 19 (timers), showing vertx command, as per http://tutorials.jenkov.com/vert.x/command-line.html.
 
 ## References
 

@@ -2,7 +2,7 @@
 
 ## Description
 
-Like module 20 (command line Vert.x), preparing simplified new module workflow.
+Like module 19-20 (timers), preparing simplified new module workflow.
 
 ## References
 

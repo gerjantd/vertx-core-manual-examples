@@ -2,7 +2,7 @@
 
 ## Description
 
-Like module 20-22 (main verticle firing one-time and periodic timer), using new package structure. Main verticle (pom.xml, redeploy.sh) now: io.vertx.starter.verticle.MainVerticle. No diff between vertx.MainVerticleApp and java.MainVerticleApp.
+Like module 19-22 (timers), using new package structure. Main verticle (pom.xml, redeploy.sh) now: io.vertx.starter.verticle.MainVerticle. No diff between vertx.MainVerticleApp and java.MainVerticleApp.
 
 ## References
 

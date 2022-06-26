@@ -2,7 +2,7 @@
 
 ## Description
 
-Like module 20 and 21 (command line Vert.x), verifying simplified new module workflow.
+Like module 19-21 (timers), verifying simplified new module workflow.
 
 ## References
 

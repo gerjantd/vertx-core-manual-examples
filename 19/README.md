@@ -2,7 +2,7 @@
 
 ## Description
 
-Vert.x timers examples, as per http://tutorials.jenkov.com/vert.x/timers.html.
+Vert.x timers examples (main verticle firing one-time and periodic timers), as per http://tutorials.jenkov.com/vert.x/timers.html.
 
 ## References
 
