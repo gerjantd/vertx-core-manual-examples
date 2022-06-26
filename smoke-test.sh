@@ -10,12 +10,12 @@ show_help() {
 build_and_run () {
   clear
   pushd $(printf "%02d\n" $MODULE) > /dev/null 2>&1
-  head -n 5 README
+  head -n 5 README.md
   echo "\n========\n"
   echo "Building...\n"
   eval "$BUILD_COMMAND"
   echo ""
-  head -n 5 README
+  head -n 5 README.md
   echo "\n========\n"
   echo "Running... (Press Ctrl+C to continue)\n"
   eval "$RUN_COMMAND"
@@ -93,7 +93,7 @@ for MODULE in $(seq $FROM_MODULE $TO_MODULE); do
     RUN_COMMAND="java -cp target/*fat.jar VertxApp"
   elif [ $MODULE -ge 6 ] && [ $MODULE -le 9 ]; then
     RUN_COMMAND="java -cp target/*fat.jar io.vertx.starter.VertxApp"
-  elif [ $MODULE -ge 10 ]  && [ $MODULE -le 20 ]; then
+  elif [ $MODULE -ge 10 ]  && [ $MODULE -le 22 ]; then
     RUN_COMMAND="java -jar target/*fat.jar"
   else
     echo "Module $(printf "%02d\n" $MODULE) not found, aborting"
