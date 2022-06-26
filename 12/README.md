@@ -14,9 +14,9 @@ Vert.x buffers examples, as per http://tutorials.jenkov.com/vert.x/buffers.html.
 
 ```
 $ mvn clean package
-$ java -jar target/vertx-starter-12-1.0.0-SNAPSHOT-fat.jar
-$ java -cp target/vertx-starter-12-1.0.0-SNAPSHOT-fat.jar io.vertx.starter.VertxApp
-$ java -cp target/vertx-starter-12-1.0.0-SNAPSHOT-fat.jar io.vertx.starter.App
+$ java -jar target/*fat.jar
+$ java -cp target/*fat.jar io.vertx.starter.VertxApp
+$ java -cp target/*fat.jar io.vertx.starter.App
 ```
 
 ```

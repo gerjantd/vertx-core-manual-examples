@@ -14,9 +14,9 @@ Vert.x HTTP server examples, as per http://tutorials.jenkov.com/vert.x/http-serv
 
 ```
 $ mvn clean package
-$ java -jar target/vertx-starter-13-1.0.0-SNAPSHOT-fat.jar
-$ java -cp target/vertx-starter-13-1.0.0-SNAPSHOT-fat.jar io.vertx.starter.VertxApp
-$ java -cp target/vertx-starter-13-1.0.0-SNAPSHOT-fat.jar io.vertx.starter.App
+$ java -jar target/*fat.jar
+$ java -cp target/*fat.jar io.vertx.starter.VertxApp
+$ java -cp target/*fat.jar io.vertx.starter.App
 ```
 
 ```

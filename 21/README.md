@@ -17,8 +17,8 @@ Like module 20 (command line Vert.x), preparing simplified new module workflow.
 ```
 $ mvn clean package
 $ java -jar target/*fat.jar
-($ java -cp target/*fat.jar io.vertx.starter.VertxApp)
-($ java -cp target/*fat.jar io.vertx.starter.JavaAppMainVerticle)
+$ java -cp target/*fat.jar io.vertx.starter.VertxApp
+$ java -cp target/*fat.jar io.vertx.starter.JavaAppMainVerticle
 ```
 
 ### 2.
@@ -33,7 +33,7 @@ $ ./redeploy.sh
 $ mvn clean compile dependency:copy-dependencies
 $ CLASSPATH=$(echo target/dependency/*.jar | tr ' ' ':'):target/classes
 $ java -cp $CLASSPATH io.vertx.starter.VertxApp
-($ java -cp $CLASSPATH io.vertx.starter.JavaAppMainVerticle)
+$ java -cp $CLASSPATH io.vertx.starter.JavaAppMainVerticle
 ```
 
 ### Test
@@ -47,5 +47,5 @@ $ vertx run io.vertx.starter.MainVerticle -cp target/*SNAPSHOT.jar
 $ cd target/classes/
 $ vertx run io.vertx.starter.MainVerticle
 $ cd ../../
-$ vertx run src/main/resources/helloworld.js
+(broken?) $ vertx run src/main/resources/helloworld.js
 ```

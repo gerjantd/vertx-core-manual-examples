@@ -14,7 +14,7 @@ Vert.x verticles examples, as per http://tutorials.jenkov.com/vert.x/verticles.h
 
 ```
 $ mvn clean package
-$ java -jar target/vertx-starter-10-1.0.0-SNAPSHOT-fat.jar
+$ java -jar target/*fat.jar
 ```
 
 ```
