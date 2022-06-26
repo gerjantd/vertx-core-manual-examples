@@ -76,6 +76,11 @@ if [ $FROM_MODULE -gt $TO_MODULE ]; then
   TO_MODULE=$FROM_MODULE
 fi
 
+LAST_MODULE=$(find . -maxdepth 1 -type d -name "??" | sed -e 's/.\///' | sort -r | head -n 1)
+if [ $TO_MODULE -gt $LAST_MODULE ]; then
+  TO_MODULE=$LAST_MODULE
+fi
+
 for MODULE in $(seq $FROM_MODULE $TO_MODULE); do
 # https://unix.stackexchange.com/questions/49861/seq-invalid-floating-point-argument-error
 #printf '<%q>\n' "$FROM_MODULE"
@@ -93,10 +98,10 @@ for MODULE in $(seq $FROM_MODULE $TO_MODULE); do
     RUN_COMMAND="java -cp target/*fat.jar VertxApp"
   elif [ $MODULE -ge 6 ] && [ $MODULE -le 9 ]; then
     RUN_COMMAND="java -cp target/*fat.jar io.vertx.starter.VertxApp"
-  elif [ $MODULE -ge 10 ]  && [ $MODULE -le 22 ]; then
+  elif [ $MODULE -ge 10 ]; then
     RUN_COMMAND="java -jar target/*fat.jar"
   else
-    echo "Module $(printf "%02d\n" $MODULE) not found, aborting"
+    echo "Build and run for module $(printf "%02d\n" $MODULE) not defined, aborting"
     exit 1
   fi
   build_and_run
