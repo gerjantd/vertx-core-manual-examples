@@ -46,6 +46,10 @@ $ mvn clean package
 $ vertx run io.vertx.starter.MainVerticle -cp target/*SNAPSHOT.jar 
 $ cd target/classes/
 $ vertx run io.vertx.starter.MainVerticle
+```
+
+Broken in Vert.x 4.1.3 (works in 3.9.13):
+```
 $ cd ../../
-(broken?) $ vertx run src/main/resources/helloworld.js
+$ vertx run src/main/resources/helloworld.js
 ```
