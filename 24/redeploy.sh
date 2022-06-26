@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 export LAUNCHER="io.vertx.core.Launcher"
-export VERTICLE="io.vertx.starter.verticle.MainVerticle"
+export VERTICLE="io.vertx.starter.MainVerticle"
 export CMD="mvn compile"
 export VERTX_CMD="run"
 

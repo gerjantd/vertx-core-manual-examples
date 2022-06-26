@@ -1,4 +1,4 @@
-package io.vertx.starter.verticle;
+package io.vertx.starter;
 
 import io.vertx.core.Vertx;
 import io.vertx.junit5.VertxExtension;
