@@ -34,8 +34,8 @@ $ ./smoke-test.sh -v -f 0 -t $(find . -maxdepth 1 -type d -name "??" | sed -e 's
 #### All, part 0.
 
 ```bash
-$ export OLD=21
-$ export NEW=22
+$ export OLD=x
+$ export NEW=y
 $ git status
 $ mvn clean
 $ git branch -a
@@ -48,7 +48,7 @@ $ cp -pvri $OLD $NEW
 ```bash
 $ sed -i "" -e "s/^  <\/modules>/    <module>$NEW<\/module>\n  <\/modules>/" pom.xml
 $ sed -i "" -e "s/vertx-starter-[0-9]\{2\}/vertx-starter-$NEW/" $NEW/pom.xml
-$ sed -i "" -e "s/Module $OLD/Module $NEW/" $NEW/README
+$ sed -i "" -e "s/Module $OLD/Module $NEW/" $NEW/README.md
 ```
 
 #### Linux, part 1.
@@ -56,7 +56,7 @@ $ sed -i "" -e "s/Module $OLD/Module $NEW/" $NEW/README
 ```bash
 $ sed -i -e 's/^  <\/modules>/    <module>$NEW<\/module>\n  <\/modules>/' pom.xml
 $ sed -i -e 's/vertx-starter-[0-9]\{2\}/vertx-starter-$NEW/' $NEW/pom.xml
-$ sed -i -e 's/Module $OLD/Module $NEW/' $NEW/README
+$ sed -i -e 's/Module $OLD/Module $NEW/' $NEW/README.md
 ```
 
 #### All, part 2.
@@ -64,7 +64,7 @@ $ sed -i -e 's/Module $OLD/Module $NEW/' $NEW/README
 ```bash
 $ less pom.xml 
 $ less $NEW/pom.xml 
-$ less $NEW/README 
+$ less $NEW/README.md 
 $ cd $NEW
 
 (work)*
