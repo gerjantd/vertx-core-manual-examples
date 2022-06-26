@@ -2,12 +2,13 @@
 
 ## Description
 
-.
+Like module 20-22 (main verticle firing one-time and periodic timer), using new package structure. Main verticle (pom.xml, redeploy.sh) now: io.vertx.starter.verticle.MainVerticle. No diff between vertx.MainVerticleApp and java.MainVerticleApp.
 
 ## References
 
 * https://vertx.io/docs/vertx-core/java/
 * https://github.com/vert-x3/vertx-maven-starter
+* http://tutorials.jenkov.com/vert.x/
 
 ## Build & run
 
@@ -16,8 +17,11 @@
 ```
 $ mvn clean package
 $ java -jar target/*fat.jar
-$ java -cp target/*fat.jar io.vertx.starter.VertxApp
-$ java -cp target/*fat.jar io.vertx.starter.JavaAppMainVerticle
+$ java -cp target/*fat.jar io.vertx.starter.app.vertx.MainVerticleApp
+$ java -cp target/*fat.jar io.vertx.starter.app.java.MainVerticleApp
+$ java -cp target/*fat.jar io.vertx.starter.app.java.BufferLengthApp
+$ java -cp target/*fat.jar io.vertx.starter.app.java.NowLoopApp
+$ java -cp target/*fat.jar io.vertx.starter.app.java.HellWorldApp
 ```
 
 ### 2.
@@ -31,8 +35,8 @@ $ ./redeploy.sh
 ```
 $ mvn clean compile dependency:copy-dependencies
 $ CLASSPATH=$(echo target/dependency/*.jar | tr ' ' ':'):target/classes
-$ java -cp $CLASSPATH io.vertx.starter.VertxApp
-$ java -cp $CLASSPATH io.vertx.starter.JavaAppMainVerticle
+$ java -cp $CLASSPATH io.vertx.starter.app.vertx.MainVerticleApp
+$ java -cp $CLASSPATH io.vertx.starter.app.java.MainVerticleApp
 ```
 
 ### Test
@@ -40,11 +44,11 @@ $ java -cp $CLASSPATH io.vertx.starter.JavaAppMainVerticle
 ```
 $ vertx -version
 $ mvn clean compile dependency:copy-dependencies
-$ vertx run io.vertx.starter.MainVerticle -cp $(echo target/dependency/*.jar|tr ' ' ':'):target/classes
+$ vertx run io.vertx.starter.verticle.MainVerticle -cp $(echo target/dependency/*.jar|tr ' ' ':'):target/classes
 $ mvn clean package
-$ vertx run io.vertx.starter.MainVerticle -cp target/*SNAPSHOT.jar 
+$ vertx run io.vertx.starter.verticle.MainVerticle -cp target/*SNAPSHOT.jar 
 $ cd target/classes/
-$ vertx run io.vertx.starter.MainVerticle
+$ vertx run io.vertx.starter.verticle.MainVerticle
 ```
 
 Broken in Vert.x 4.1.3 (works in 3.9.13):

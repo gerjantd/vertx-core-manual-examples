@@ -1,8 +1,9 @@
-package io.vertx.starter;
+package io.vertx.starter.app.java;
 
 import io.vertx.core.Vertx;
+import io.vertx.starter.verticle.MainVerticle;
 
-public class JavaAppMainVerticle {
+public class MainVerticleApp {
 
 	public static void main(String[] args) throws InterruptedException {
 

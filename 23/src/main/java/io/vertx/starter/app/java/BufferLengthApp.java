@@ -1,8 +1,8 @@
-package io.vertx.starter;
+package io.vertx.starter.app.java;
 
 import io.vertx.core.buffer.Buffer;
 
-public class JavaAppBufferLength {
+public class BufferLengthApp {
 
   public static void main(String[] args) throws InterruptedException {
 

@@ -1,8 +1,8 @@
-package io.vertx.starter;
+package io.vertx.starter.app.java;
 
 import java.time.LocalDateTime;
 
-public class JavaAppNowLoop {
+public class NowLoopApp {
 
 	public static void main(String[] args) throws InterruptedException {
 

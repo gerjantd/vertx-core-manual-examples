@@ -14,7 +14,7 @@
   <artifactId>vertx-starter-23</artifactId>
 
   <properties>
-    <main.verticle>io.vertx.starter.MainVerticle</main.verticle>
+    <main.verticle>io.vertx.starter.verticle.MainVerticle</main.verticle>
   </properties>
 
 </project>

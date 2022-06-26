@@ -1,6 +1,6 @@
-package io.vertx.starter;
+package io.vertx.starter.app.java;
 
-public class JavaAppHelloWorld {
+public class HelloWorldApp {
 
 	public static void main(String[] args) throws Exception {
 
