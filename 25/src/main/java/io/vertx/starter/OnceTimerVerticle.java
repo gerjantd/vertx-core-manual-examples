@@ -1,5 +1,7 @@
 package io.vertx.starter;
 
+import java.time.LocalDateTime;
+
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Handler;
 
@@ -9,19 +11,19 @@ public class OnceTimerVerticle extends AbstractVerticle {
 
   @Override
   public void start() throws Exception {
-    id = vertx.setTimer(1000, new Handler<Long>() {
+    id = vertx.setTimer(4000, new Handler<Long>() {
       @Override
       public void handle(Long aLong) {
-        System.out.println("Once timer fired");
+        System.out.println(LocalDateTime.now() + " Once timer fired");
       }
     });
-    System.out.println("OnceTimerVerticle started");
+    System.out.println(LocalDateTime.now() + " OnceTimerVerticle::start: Done");
   }
 
   @Override
   public void stop() throws Exception {
     vertx.cancelTimer(id);
-    System.out.println("OnceTimerVerticle stopped");
+    System.out.println(LocalDateTime.now() + " OnceTimerVerticle::stop: Done");
   }
 
 }
