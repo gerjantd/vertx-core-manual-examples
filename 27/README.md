@@ -1,8 +1,8 @@
-# Module 26
+# Module 27
 
 ## Description
 
-War packaging rework of module 25 for testing with Wildfly Vert.x extension (https://github.com/gaol/wildfly-vertx-extension).
+Like module 26, exercising deployment descriptor.
 
 ## References
 
