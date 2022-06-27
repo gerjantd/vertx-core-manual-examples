@@ -2,7 +2,7 @@
 
 ## Description
 
-Like module 24, adding eventbus verticles.
+Like module 24, showing sync and async deployment alternatives as in module 07.
 
 ## References
 
@@ -23,19 +23,4 @@ $ ./redeploy.sh
 ```
 $ mvn clean package
 $ java -jar target/*fat.jar
-```
-
-### Fat jar as classpath starting App
-
-```
-$ mvn clean package
-$ java -cp target/*fat.jar io.vertx.starter.App
-```
-
-### Exploded classpath starting App
-
-```
-$ mvn clean compile dependency:copy-dependencies
-$ CLASSPATH=$(echo target/dependency/*.jar | tr ' ' ':'):target/classes
-$ java -cp $CLASSPATH io.vertx.starter.App
 ```
