@@ -98,8 +98,10 @@ for MODULE in $(seq $FROM_MODULE $TO_MODULE); do
     RUN_COMMAND="java -cp target/*fat.jar VertxApp"
   elif [ $MODULE -ge 6 ] && [ $MODULE -le 9 ]; then
     RUN_COMMAND="java -cp target/*fat.jar io.vertx.starter.VertxApp"
-  elif [ $MODULE -ge 10 ]; then
+  elif [ $MODULE -ge 10 ] && [ $MODULE -le 25 ]; then
     RUN_COMMAND="java -jar target/*fat.jar"
+  elif [ $MODULE -ge 26 ]; then
+    RUN_COMMAND="./redeploy.sh"
   else
     echo "Build and run for module $(printf "%02d\n" $MODULE) not defined, aborting"
     exit 1
