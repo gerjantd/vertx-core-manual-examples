@@ -2,7 +2,15 @@
 
 ## Description
 
-Like module 26, exercising deployment descriptor.
+Like module 26, exercising deployment descriptor, and deploying to local or remote wildfly.
+
+## Notes
+
+Module 26 used a deployment descripter that deploys only MainVerticle. This verticle subsequently deploys PeriodicTimerVerticle synchronously, and then OnceTimerVerticle and HttpServerVerticle asynchronously, clarifying various events.
+
+Module 27 uses a deployment descriptor deploying both TimerVerticles and HttpServerVerticle. All of these are deployed synchronously.
+
+However, the start method of HttpServerVerticle starts the HTTP server itself asynchronously. Revies the source code and the logged events.
 
 ## References
 
@@ -38,8 +46,18 @@ $ cd dist/target/wildfly-vertx-dist*
 $ bin/standalone -c standalone-vertx.xml
 ```
 
+#### Local Wildfly
+
 Shell 2:
 ```
 $ mvn clean wildfly:deploy
 $ ab -c 4 -n 8 http://127.0.0.1:8888/
+```
+
+#### Remote  Wildfly
+
+Shell 2:
+```
+$ mvn clean wildfly:deploy -Pwildfly-remote
+$ ab -c 4 -n 8 http://192.168.0.15:8888/
 ```

@@ -18,6 +18,38 @@
     <main.verticle>io.vertx.starter.MainVerticle</main.verticle>
     <version.wildfly.maven.plugin>2.0.2.Final</version.wildfly.maven.plugin>
   </properties>
+
+  <profiles>
+    <profile>
+      <id>wildfly-local</id>
+      <activation>
+        <property>
+          <name>!wildfly-remote</name>
+        </property>
+      </activation>
+      <properties>
+        <wildfly.hostname>localhost</wildfly.hostname>
+        <wildfly.port>9990</wildfly.port>
+        <wildfly.username></wildfly.username>
+        <wildfly.password></wildfly.password>
+      </properties>
+    </profile>
+    <profile>
+      <id>wildfly-remote</id>
+      <activation>
+        <property>
+          <name>wildfly-remote</name>
+        </property>
+      </activation>
+      <properties>
+        <wildfly.hostname>192.168.0.15</wildfly.hostname>
+        <wildfly.port>9990</wildfly.port>
+        <wildfly.username>wildfly</wildfly.username>
+        <wildfly.password>wildfly1!</wildfly.password>
+      </properties>
+    </profile>
+  </profiles>
+
   <build>
     <pluginManagement>
       <plugins>
@@ -25,6 +57,12 @@
           <groupId>org.wildfly.plugins</groupId>
           <artifactId>wildfly-maven-plugin</artifactId>
           <version>${version.wildfly.maven.plugin}</version>
+          <configuration>
+            <hostname>${wildfly.hostname}</hostname>
+	    <port>${wildfly.port}</port>
+	    <username>${wildfly.username}</username>
+	    <password>${wildfly.password}</password>
+          </configuration>
         </plugin>
       </plugins>
     </pluginManagement>
