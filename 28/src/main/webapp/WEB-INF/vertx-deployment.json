@@ -1,15 +1,7 @@
 {
   "deployments": [
     {
-      "verticle-class": "io.vertx.starter.PeriodicTimerVerticle",
-      "vertx": "default"
-    },
-    {
-      "verticle-class": "io.vertx.starter.OnceTimerVerticle",
-      "vertx": "default"
-    },
-    {
-      "verticle-class": "io.vertx.starter.HttpServerVerticle",
+      "verticle-class": "io.vertx.starter.MainVerticle",
       "vertx": "default"
     }
   ]

@@ -1,8 +1,0 @@
-{
-  "deployments": [
-    {
-      "verticle-class": "io.vertx.starter.MainVerticle",
-      "vertx": "default"
-    }
-  ]
-}

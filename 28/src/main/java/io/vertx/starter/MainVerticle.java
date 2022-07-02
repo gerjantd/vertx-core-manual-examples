@@ -11,28 +11,30 @@ public class MainVerticle extends AbstractVerticle {
   @Override
   public void start() throws Exception {
 
-	    vertx.deployVerticle(new PeriodicTimerVerticle());
-	    System.out.println(LocalDateTime.now() + " MainVerticle::start: Deployed PeriodicTimerVerticle synchronously, passing a verticle");
+    vertx.deployVerticle(new EventBusReceiverVerticle("R1"), stringAsyncResult -> {
+      System.out.println(LocalDateTime.now() + " " + Thread.currentThread().getName() + " (Handler::handle): EventBusReceiverVerticle R1 deployed, handler called with async result");
+    });
+    System.out.println(LocalDateTime.now() + " " + Thread.currentThread().getName() + " MainVerticle::start: Deploying EventBusReceiverVerticle R1 async, will call handler when deployed");
 
-	    vertx.deployVerticle(new OnceTimerVerticle(), new Handler<AsyncResult<String>>() {
-	    	@Override
-	    	public void handle(AsyncResult<String> stringAsyncResult) {
-	    		System.out.println(LocalDateTime.now() + " (Handler)::handle: OnceTimerVerticle deployment complete, handler called with async result: " + stringAsyncResult.toString());
-	    	}
-	    });
-	    System.out.println(LocalDateTime.now() + " MainVerticle::start: Deploying OnceTimerVerticle from MainVerticle asynchronously, passing a verticle and a handler - handler will be called when deployment is complete");
+    vertx.deployVerticle(new EventBusReceiverVerticle("R2"), stringAsyncResult -> {
+      System.out.println(LocalDateTime.now() + " " + Thread.currentThread().getName() + " (Handler::handle): EventBusReceiverVerticle R2 deployed, handler called with async result");
+    });
+    System.out.println(LocalDateTime.now() + " " + Thread.currentThread().getName() + " MainVerticle::start: Deploying EventBusReceiverVerticle R2 async, will call handler when deployed");
 
-	    vertx.deployVerticle(new HttpServerVerticle(), stringAsyncResult -> {
-	    	System.out.println(LocalDateTime.now() + " (Handler::handle): HttpServerVerticle deployment complete, handler called with async result: " + stringAsyncResult.toString());
-	    });
-	    System.out.println(LocalDateTime.now() + " MainVerticle::start: Deploying HttpServerVerticle from MainVerticle asynchronously, passing a verticle and a lambda - handler will be called when deployment is complete");
+    System.out.println(LocalDateTime.now() + " " + Thread.currentThread().getName() + " MainVerticle::start: Sleeping 2000 ms");
+    Thread.sleep(2000);
 
-    System.out.println(LocalDateTime.now() + " MainVerticle::start: Done");
+    vertx.deployVerticle(new EventBusSenderVerticle(), stringAsyncResult -> {
+      System.out.println(LocalDateTime.now() + " " + Thread.currentThread().getName() + " (Handler::handle): EventBusSenderVerticle deployed, handler called with async result");
+    });
+    System.out.println(LocalDateTime.now() + " " + Thread.currentThread().getName() + " MainVerticle::start: Deploying EventBusSenderVerticle async, will call handler when deployed");
+
+    System.out.println(LocalDateTime.now() + " " + Thread.currentThread().getName() + " MainVerticle::start: Done");
 
   }
 
   @Override
   public void stop() throws Exception {
-    System.out.println(LocalDateTime.now() + " MainVerticle::stop: Done");
+    System.out.println(LocalDateTime.now() + " " + Thread.currentThread().getName() + " MainVerticle::stop: Done");
   }
 }

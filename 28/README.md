@@ -2,11 +2,9 @@
 
 ## Description
 
-Like module 27, ...
+Like module 27, basic event bus example (module 9, fixed)
 
 ## Notes
-
-...
 
 ## References
 
@@ -47,7 +45,6 @@ $ bin/standalone -c standalone-vertx.xml
 Shell 2:
 ```
 $ mvn clean wildfly:deploy
-$ ab -c 4 -n 8 http://127.0.0.1:8888/
 ```
 
 #### Remote  Wildfly
@@ -55,5 +52,4 @@ $ ab -c 4 -n 8 http://127.0.0.1:8888/
 Shell 2:
 ```
 $ mvn clean wildfly:deploy -Pwildfly-remote
-$ ab -c 4 -n 8 http://192.168.0.15:8888/
 ```
