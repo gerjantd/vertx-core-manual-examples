@@ -28,6 +28,7 @@
 		<maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
 		<maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
 		<exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
+		<version.wildfly.maven.plugin>2.0.2.Final</version.wildfly.maven.plugin>
 		<vertx.version>4.3.1</vertx.version>
 		<junit-jupiter.version>5.7.0</junit-jupiter.version>
 		<main.verticle>io.vertx.starter.MainVerticle</main.verticle>
@@ -205,6 +206,7 @@
 			<plugin>
 				<groupId>org.wildfly.plugins</groupId>
 				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>${version.wildfly.maven.plugin}</version>
 			</plugin>
 
 			<!-- From: Vert.x starter -->
