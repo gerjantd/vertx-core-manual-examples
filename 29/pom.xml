@@ -1,71 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>io.vertx.starter</groupId>
-    <artifactId>vertx-starter-parent</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-  </parent>
-
-  <artifactId>vertx-starter-29</artifactId>
+  <groupId>io.vertx.starter</groupId>
+  <artifactId>wildfly-vertx-reactive-messaging</artifactId>
+  <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
+  <name>wildfly-vertx-reactive-messaging Maven Webapp</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
   <properties>
-    <main.verticle>io.vertx.starter.MainVerticle</main.verticle>
-    <version.wildfly.maven.plugin>2.0.2.Final</version.wildfly.maven.plugin>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
   </properties>
 
-  <profiles>
-    <profile>
-      <id>wildfly-local</id>
-      <activation>
-        <property>
-          <name>!wildfly-remote</name>
-        </property>
-      </activation>
-      <properties>
-        <wildfly.hostname>localhost</wildfly.hostname>
-        <wildfly.port>9990</wildfly.port>
-        <wildfly.username></wildfly.username>
-        <wildfly.password></wildfly.password>
-      </properties>
-    </profile>
-    <profile>
-      <id>wildfly-remote</id>
-      <activation>
-        <property>
-          <name>wildfly-remote</name>
-        </property>
-      </activation>
-      <properties>
-        <wildfly.hostname>192.168.0.15</wildfly.hostname>
-        <wildfly.port>9990</wildfly.port>
-        <wildfly.username>wildfly</wildfly.username>
-        <wildfly.password>wildfly1!</wildfly.password>
-      </properties>
-    </profile>
-  </profiles>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
   <build>
-    <pluginManagement>
+    <finalName>wildfly-vertx-reactive-messaging</finalName>
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>
-          <groupId>org.wildfly.plugins</groupId>
-          <artifactId>wildfly-maven-plugin</artifactId>
-          <version>${version.wildfly.maven.plugin}</version>
-          <configuration>
-            <hostname>${wildfly.hostname}</hostname>
-	    <port>${wildfly.port}</port>
-	    <username>${wildfly.username}</username>
-	    <password>${wildfly.password}</password>
-          </configuration>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+        <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.22.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>3.2.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.5.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.8.2</version>
         </plugin>
       </plugins>
     </pluginManagement>
   </build>
-
 </project>
