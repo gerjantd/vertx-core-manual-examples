@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>io.vertx.starter</groupId>
+	<artifactId>vertx-starter-30</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+	<properties>
+
+		<!-- From: Wildfly Microprofile Reactive Messaging Kafka quickstart -->
+
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<!-- BOM versions -->
+		<version.microprofile.bom>26.0.0.Final</version.microprofile.bom>
+		<version.server.bom>26.0.0.Final</version.server.bom>
+
+		<!-- From: Vert.x starter -->
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+		<maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
+		<maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+		<exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
+		<version.wildfly.maven.plugin>2.0.2.Final</version.wildfly.maven.plugin>
+		<vertx.version>4.3.1</vertx.version>
+		<junit-jupiter.version>5.7.0</junit-jupiter.version>
+		<main.verticle>io.vertx.starter.MainVerticle</main.verticle>
+		<launcher.class>io.vertx.core.Launcher</launcher.class>
+
+	</properties>
+
+	<dependencyManagement>
+
+		<dependencies>
+
+			<!-- From: Wildfly Microprofile Reactive Messaging Kafka quickstart -->
+
+			<!-- importing the jakartaee8-with-tools BOM adds specs and other useful 
+				artifacts as managed dependencies -->
+			<dependency>
+				<groupId>org.wildfly.bom</groupId>
+				<artifactId>wildfly-jakartaee8-with-tools</artifactId>
+				<version>${version.server.bom}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!-- importing the microprofile BOM adds MicroProfile specs -->
+			<dependency>
+				<groupId>org.wildfly.bom</groupId>
+				<artifactId>wildfly-microprofile</artifactId>
+				<version>${version.microprofile.bom}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!-- From: Vert.x starter -->
+
+			<dependency>
+				<groupId>io.vertx</groupId>
+				<artifactId>vertx-stack-depchain</artifactId>
+				<version>${vertx.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+		</dependencies>
+
+	</dependencyManagement>
+
+	<dependencies>
+
+		<!-- From: Wildfly Microprofile Reactive Messaging Kafka quickstart -->
+
+		<!-- Core dependencies -->
+
+		<!-- Import the CDI API, we use provided scope as the API is included in 
+			WildFly -->
+		<dependency>
+			<groupId>jakarta.enterprise</groupId>
+			<artifactId>jakarta.enterprise.cdi-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<!-- Import the Kafka Client API, we use provided scope as the API is included 
+			in WildFly -->
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-clients</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<!-- Import the SmallRye Kafka API, we use provided scope as the API is 
+			included in WildFly -->
+		<dependency>
+			<groupId>io.smallrye.reactive</groupId>
+			<artifactId>smallrye-reactive-messaging-kafka-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<!-- Import the Reactive Messaging API, we use provided scope as the API 
+			is included in WildFly -->
+		<dependency>
+			<groupId>org.eclipse.microprofile.reactive.messaging</groupId>
+			<artifactId>microprofile-reactive-messaging-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<!-- Import the Reactive Streams Operators API, we use provided scope as 
+			the API is included in WildFly -->
+		<dependency>
+			<groupId>org.eclipse.microprofile.reactive-streams-operators</groupId>
+			<artifactId>microprofile-reactive-streams-operators-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<!-- Import the Reactive Streams Operators API, we use provided scope as 
+			the API is included in WildFly -->
+		<dependency>
+			<groupId>org.reactivestreams</groupId>
+			<artifactId>reactive-streams</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- 'Supporting' dependencies -->
+
+		<!-- Import the Persistence API, we use provided scope as the API is included 
+			in WildFly -->
+		<dependency>
+			<groupId>jakarta.persistence</groupId>
+			<artifactId>jakarta.persistence-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<!-- Import the Annotations API, we use provided scope as the API is included 
+			in WildFly -->
+		<dependency>
+			<groupId>org.jboss.spec.javax.annotation</groupId>
+			<artifactId>jboss-annotations-api_1.3_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<!-- Import the Persistence API, we use provided scope as the API is included 
+			in WildFly -->
+		<dependency>
+			<groupId>org.jboss.spec.javax.transaction</groupId>
+			<artifactId>jboss-transaction-api_1.3_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<!-- Import the JAX-RS API, we use provided scope as the API is included 
+			in WildFly -->
+		<dependency>
+			<groupId>org.jboss.spec.javax.ws.rs</groupId>
+			<artifactId>jboss-jaxrs-api_2.1_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<!-- Import the resteasy-jaxrs API, we use provided scope as the API is 
+			included in WildFly -->
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-core-spi</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- From: Vert.x starter -->
+
+		<dependency>
+			<groupId>io.vertx</groupId>
+			<artifactId>vertx-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.vertx</groupId>
+			<artifactId>vertx-junit5</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>${junit-jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${junit-jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-resolver-dns-native-macos</artifactId>
+			<classifier>osx-x86_64</classifier>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+
+		<!-- From: Wildfly Microprofile Reactive Messaging Kafka quickstart -->
+
+		<!-- Set the name of the archive -->
+		<finalName>${project.artifactId}</finalName>
+
+		<plugins>
+
+			<!-- Allows to use mvn wildfly:deploy -->
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>${version.wildfly.maven.plugin}</version>
+			</plugin>
+
+			<!-- From: Vert.x starter -->
+
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<release>11</release>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>${maven-shade-plugin.version}</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<manifestEntries>
+										<Main-Class>${launcher.class}</Main-Class>
+										<Main-Verticle>${main.verticle}</Main-Verticle>
+									</manifestEntries>
+								</transformer>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
+							</transformers>
+							<outputFile>${project.build.directory}/${project.artifactId}-${project.version}-fat.jar
+							</outputFile>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven-surefire-plugin.version}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>${exec-maven-plugin.version}</version>
+				<configuration>
+					<mainClass>io.vertx.core.Launcher</mainClass>
+					<arguments>
+						<argument>run</argument>
+						<argument>${main.verticle}</argument>
+					</arguments>
+				</configuration>
+			</plugin>
+
+		</plugins>
+
+	</build>
+
+</project>
