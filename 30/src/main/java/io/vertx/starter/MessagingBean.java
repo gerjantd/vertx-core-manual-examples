@@ -31,6 +31,7 @@ import io.smallrye.reactive.messaging.kafka.api.IncomingKafkaRecordMetadata;
 import io.smallrye.reactive.messaging.kafka.api.KafkaMetadataUtil;
 import io.smallrye.reactive.messaging.kafka.api.OutgoingKafkaRecordMetadata;
 
+import io.vertx.core.Vertx;
 
 /**
  * @author <a href="mailto:kabir.khan@jboss.com">Kabir Khan</a>
@@ -43,6 +44,9 @@ public class MessagingBean {
 
     @Inject
     DatabaseBean dbBean;
+    
+    @Inject
+    private Vertx vertx;
 
     @Outgoing("source")
     public CompletionStage<String> sendInVm() {
@@ -50,9 +54,17 @@ public class MessagingBean {
     }
 
     @Incoming("source")
-    @Outgoing("filter")
+    @Outgoing("vertx")
     public String logAllMessages(String message) {
         System.out.println("Received " + message);
+        return message;
+    }
+
+    @Incoming("vertx")
+    @Outgoing("filter")
+    public String copyToVertx(String message) {
+        System.out.println("Copying message to vertx via event bus");
+    	vertx.eventBus().send("message-event", message);
         return message;
     }
 

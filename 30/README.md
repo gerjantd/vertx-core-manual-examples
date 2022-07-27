@@ -2,13 +2,12 @@
 
 ## Description
 
-Merge Wildfly Vert.x Extension example webapp with Wildfly Microprofile Reactive Messaging Kafka quickstart (deploy on Wildfly with Vert.x and Microprofile Reactive Messaging enabled).
+As Module 29, with trivial example of CDI access to vertx instance (29 recap: Merge Wildfly Vert.x Extension example webapp with Wildfly Microprofile Reactive Messaging Kafka quickstart (deploy on Wildfly with Vert.x and Microprofile Reactive Messaging enabled)).
 
 ## Notes
 
 * Does not use parent pom.xml unlike module 28.
 * Does not use tests from either example webapp (module 28) or quickstart. 
-* No actual access from quickstart to example app (CDI or JNDI).
 
 ## References
 

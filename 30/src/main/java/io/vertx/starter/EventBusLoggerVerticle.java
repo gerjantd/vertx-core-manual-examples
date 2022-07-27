@@ -20,22 +20,19 @@ import java.time.LocalDateTime;
 
 import io.vertx.core.AbstractVerticle;
 
-public class MainVerticle extends AbstractVerticle {
+public class EventBusLoggerVerticle extends AbstractVerticle {
 
   @Override
-  public void start() throws Exception {
-
-    vertx.deployVerticle(new EventBusLoggerVerticle(), stringAsyncResult -> {
-      System.out.println(LocalDateTime.now() + " " + Thread.currentThread().getName() + " (Handler::handle): EventBusLoggerVerticle deployed, handler called with async result");
+  public void start() {
+    vertx.eventBus().consumer("message-event", message -> {
+      System.out.println(LocalDateTime.now() + " " + Thread.currentThread().getName() + " EventBusLoggerVerticle received message: " + message.body());
     });
-    System.out.println(LocalDateTime.now() + " " + Thread.currentThread().getName() + " MainVerticle::start: Deploying EventBusLoggerVerticle async, will call handler when deployed");
-
-    System.out.println(LocalDateTime.now() + " " + Thread.currentThread().getName() + " MainVerticle::start: Done");
-
-  }
+    System.out.println(LocalDateTime.now() + " " + Thread.currentThread().getName() + " EventBusLoggerVerticle::start: Done");
+   }
 
   @Override
   public void stop() throws Exception {
-    System.out.println(LocalDateTime.now() + " " + Thread.currentThread().getName() + " MainVerticle::stop: Done");
+    System.out.println(LocalDateTime.now() + " " + Thread.currentThread().getName() + " EventBusLoggerVerticle::stop: Done");
   }
+
 }
